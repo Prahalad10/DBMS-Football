@@ -1,0 +1,77 @@
+type Query {
+  users: [User!]!
+  playerStats: [PlayerStats!]!
+  goalkeeperStats: [GoalkeeperStats!]!
+  clubs: [Clubs!]!
+  nationalities: [Nationality!]!
+  contracts: [Contracts!]!
+}
+
+type Mutation {
+  createUser(username: String!, password: String!, role: String!): User!
+  loginUser(username: String!, password: String!): Token!
+  createPlayer(Name: String!, NationalityID: Int!, DOB: String, Overall: Int, Value: Int, ClubID: Int, Pace: Int, Physical: Int, Shooting: Int, Passing: Int, Dribbling: Int, Defending: Int): PlayerStats!
+  updatePlayer(playerID: Int!, Name: String, NationalityID: Int, DOB: String, Overall: Int, Value: Int, ClubID: Int, Pace: Int, Physical: Int, Shooting: Int, Passing: Int, Dribbling: Int, Defending: Int): PlayerStats!
+  deletePlayer(playerID: Int!): Boolean!
+}
+
+type User {
+  id: Int!
+  username: String!
+  role: String!
+}
+
+type Token {
+  token: String!
+}
+
+type PlayerStats {
+  PlayerID: Int!
+  Name: String!
+  NationalityID: Int!
+  DOB: String
+  Overall: Int
+  Value: Int
+  ClubID: Int
+  Pace: Int
+  Physical: Int
+  Shooting: Int
+  Passing: Int
+  Dribbling: Int
+  Defending: Int
+}
+
+type GoalkeeperStats {
+  PlayerID: Int!
+  Name: String!
+  NationalityID: Int!
+  DOB: String
+  Overall: Int
+  Value: Int
+  ClubID: Int
+  Reflexes: Int
+  Diving: Int
+  Speed: Int
+  Positioning: Int
+  Handling: Int
+}
+
+type Clubs {
+  ClubID: Int!
+  ClubName: String!
+  LeagueName: String
+  NationalityID: Int!
+}
+
+type Nationality {
+  NationalityID: Int!
+  NationalityName: String!
+}
+
+type Contracts {
+  PlayerID: Int!
+  ClubID: Int!
+  DateOfJoin: String
+  DateOfEnd: String
+  ReleaseClause: Int
+}
